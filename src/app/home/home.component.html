@@ -1,3 +1,22 @@
-<div class="container-fluid">
-  
+<div class="container-custom">
+  <p id="title-p">
+    <span id="title-span"> Obtenez un épisode aléatoire de Choufli Hal </span>
+  </p>
+  <button type="button" class="btn btn-light btn-custom" (click)="onEpisode()">
+    {{buttonText}}
+  </button>
+  <div *ngIf="loading" class="text-center loading">
+    <div class="spinner-border" role="status" style="width: 3rem; height: 3rem;">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  <iframe
+    *ngIf="chosenVideoID && !loading"
+    width="560"
+    height="315"
+    [src]="videoLink | safe: 'resourceUrl'"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+  ></iframe>
 </div>
